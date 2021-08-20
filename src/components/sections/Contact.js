@@ -3,14 +3,6 @@ import ScrollAnimation from 'react-animate-on-scroll';
 import Pagetitle from '../elements/Pagetitle';
 
 function Contact() {
-  const encode = (data) => {
-    return Object.keys(data)
-      .map(
-        (key) => encodeURIComponent(key) + '=' + encodeURIComponent(data[key])
-      )
-      .join('&');
-  };
-
   const [formdata, setFormdata] = useState({
     name: '',
     email: '',
@@ -36,20 +28,8 @@ function Contact() {
       setError(true);
       setMessage('Message is required');
     } else {
-      fetch('/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: encode({ 'form-name': 'contact', formdata }),
-      })
-        .then(() => {
-          setMessage('Your message has been sent.');
-          setError(false);
-          setFormdata({ name: '', email: '', subject: '', message: '' });
-        })
-        .catch((error) => {
-          setMessage('Something went wrong!');
-          setError(true);
-        });
+      setError(false);
+      setMessage('You message has been sent!!!');
     }
   };
 
@@ -98,7 +78,6 @@ function Contact() {
 
           <div className='col-md-8'>
             <form
-              netlify
               id='contact-form'
               className='contact-form mt-6'
               onSubmit={submitHandler}>
