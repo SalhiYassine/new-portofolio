@@ -15,6 +15,7 @@ function Blog({ blogData }) {
     backend,
     api,
     live,
+    githubURL,
   } = blogData;
   const getNospaceTitle = (filesource) => {
     let tempArr = filesource.split('/');
@@ -32,8 +33,7 @@ function Blog({ blogData }) {
           <a>
             <span className='category'>{category}</span>
           </a>
-          {/* <Link to={`/projects/${id}/${getNospaceTitle(filesource)}`}> */}
-          {/* </Link> */}
+
           <img src={image} alt='blog-title' />
         </div>
         <div className='details'>
@@ -47,7 +47,12 @@ function Blog({ blogData }) {
           <p>{api}</p>
           <div className='d-flex justify-content-between  my-2'>
             {live && <Link className='btn btn-default btn-md'>Live</Link>}
-            <Link className='btn btn-default btn-md'>Source</Link>
+            <a
+              target='_blank'
+              href={githubURL}
+              className='btn btn-default btn-md'>
+              Source
+            </a>
           </div>
         </div>
       </div>
