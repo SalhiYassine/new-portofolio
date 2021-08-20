@@ -94,7 +94,7 @@ function Contact() {
                 <p>
                   Don't like forms? Send me an{' '}
                   <a target='_blank' href='mailto:yassinesalhi135@gmail.com'>
-                    email
+                    yassinesalhi135@gmail.com
                   </a>
                   . 👋
                 </p>
