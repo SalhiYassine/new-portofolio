@@ -23,7 +23,7 @@ const allBlogs = [
   {
     id: 2,
     title: 'Full Stack Resource Sharing Application',
-    image: 'images/blog/1.svg',
+    image: 'images/blog/unifluentpng.png',
     filesource: '../../blogs/MERN-FullStack-Ecommerce.md',
     date: '14 May, 2021',
     author: 'Yassine Salhi',
