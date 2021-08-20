@@ -163,6 +163,9 @@ function Contact() {
                   </div>
                 </div>
               </div>
+              <div
+                class='g-recaptcha'
+                data-sitekey='6Le5-BMcAAAAAC_3PD1w-NaCJGGhCaghJMLKdoE9'></div>
               <button
                 type='submit'
                 name='submit'
