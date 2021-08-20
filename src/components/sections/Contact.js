@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import ScrollAnimation from 'react-animate-on-scroll';
 import Pagetitle from '../elements/Pagetitle';
+import emailjs from 'emailjs-com';
 
 function Contact() {
   const [formdata, setFormdata] = useState({
-    name: '',
-    email: '',
+    from_name: '',
+    from_email: '',
     subject: '',
     message: '',
   });
@@ -15,10 +16,10 @@ function Contact() {
 
   const submitHandler = (event) => {
     event.preventDefault();
-    if (!formdata.name) {
+    if (!formdata.from_name) {
       setError(true);
       setMessage('Name is required');
-    } else if (!formdata.email) {
+    } else if (!formdata.from_email) {
       setError(true);
       setMessage('Email is required');
     } else if (!formdata.subject) {
@@ -28,8 +29,30 @@ function Contact() {
       setError(true);
       setMessage('Message is required');
     } else {
-      setError(false);
-      setMessage('You message has been sent!!!');
+      emailjs
+        .sendForm(
+          'service_1f448bn',
+          'template_ewi4wxa',
+          event.target,
+          'user_LZOdjrmcYSEO8ME4FRSLK'
+        )
+        .then(
+          (result) => {
+            setMessage('You message has been sent!!!');
+            setError(false);
+            setFormdata({
+              ['from_name']: ' ',
+              ['from_email']: ' ',
+              ['subject']: ' ',
+              ['message']: ' ',
+            });
+          },
+          (error) => {
+            setMessage('You message was not sent, something went wrong!');
+            setError(true);
+            console.log(error.text);
+          }
+        );
     }
   };
 
@@ -70,7 +93,10 @@ function Contact() {
                 animateOnce={true}>
                 <p>
                   Don't like forms? Send me an{' '}
-                  <a href='mailto:name@example.com'>email</a>. 👋
+                  <a target='_blank' href='mailto:yassinesalhi135@gmail.com'>
+                    email
+                  </a>
+                  . 👋
                 </p>
               </ScrollAnimation>
             </div>
@@ -87,8 +113,8 @@ function Contact() {
                     <input
                       type='text'
                       className='form-control'
-                      name='name'
-                      id='InputName'
+                      name='from_name'
+                      id='from_name'
                       placeholder='Your name'
                       onChange={handleChange}
                       value={formdata.name}
@@ -101,8 +127,8 @@ function Contact() {
                     <input
                       type='email'
                       className='form-control'
-                      id='InputEmail'
-                      name='email'
+                      id='from_email'
+                      name='from_email'
                       placeholder='Email address'
                       onChange={handleChange}
                       value={formdata.email}
@@ -115,7 +141,7 @@ function Contact() {
                     <input
                       type='text'
                       className='form-control'
-                      id='InputSubject'
+                      id='subject'
                       name='subject'
                       placeholder='Subject'
                       onChange={handleChange}
