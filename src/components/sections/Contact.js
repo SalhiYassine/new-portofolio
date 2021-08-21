@@ -17,6 +17,7 @@ function Contact() {
 
   const submitHandler = (event) => {
     event.preventDefault();
+    setDisabled(true);
     if (!formdata.from_name) {
       setError(true);
       setMessage('Name is required');
@@ -39,7 +40,6 @@ function Contact() {
         )
         .then(
           (result) => {
-            setDisabled(true);
             setMessage('You message has been sent!!!');
             setError(false);
             setFormdata({
@@ -50,6 +50,7 @@ function Contact() {
             });
           },
           (error) => {
+            setDisabled(false);
             setMessage('You message was not sent, something went wrong!');
             setError(true);
             console.log(error.text);
