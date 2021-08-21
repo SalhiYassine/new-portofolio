@@ -29,8 +29,7 @@ const allBlogs = [
     author: 'Yassine Salhi',
     category: 'Full-Stack',
     liveURL: '',
-    githubURL:
-      'https://github.com/SalhiYassine/cs2001-2020_21-group8/tree/main',
+    githubURL: 'https://github.com/SalhiYassine/resource-sharing-full-stack',
     frontend: 'Front-End: [React.JS, Context.JS, Axios]',
     backend: 'Back-End: [Spring, SpringBoot, SpringSecurity]',
     api: 'APIs: N/A',

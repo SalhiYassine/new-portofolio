@@ -12,6 +12,7 @@ function Contact() {
   });
 
   const [error, setError] = useState(false);
+  const [disabled, setDisabled] = useState(false);
   const [message, setMessage] = useState('');
 
   const submitHandler = (event) => {
@@ -38,13 +39,14 @@ function Contact() {
         )
         .then(
           (result) => {
+            setDisabled(true);
             setMessage('You message has been sent!!!');
             setError(false);
             setFormdata({
-              ['from_name']: ' ',
-              ['from_email']: ' ',
-              ['subject']: ' ',
-              ['message']: '  ',
+              from_name: '',
+              from_email: '',
+              subject: '',
+              message: '',
             });
           },
           (error) => {
@@ -163,17 +165,17 @@ function Contact() {
                   </div>
                 </div>
               </div>
-              <div
-                class='g-recaptcha'
-                data-sitekey='6Le5-BMcAAAAAC_3PD1w-NaCJGGhCaghJMLKdoE9'></div>
-              <button
-                type='submit'
-                name='submit'
-                id='submit'
-                value='Submit'
-                className='btn btn-default'>
-                Send Message
-              </button>
+
+              {!disabled && (
+                <button
+                  type='submit'
+                  name='submit'
+                  id='submit'
+                  value='Submit'
+                  className='btn btn-default'>
+                  Send Message
+                </button>
+              )}
             </form>
             {handleAlerts()}
           </div>
