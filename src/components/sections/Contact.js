@@ -44,7 +44,7 @@ function Contact() {
               ['from_name']: ' ',
               ['from_email']: ' ',
               ['subject']: ' ',
-              ['message']: ' ',
+              ['message']: '  ',
             });
           },
           (error) => {
